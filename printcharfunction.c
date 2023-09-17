@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 /**
- * print_char echo character
+ * print_char - echo character
  * @args: characters argments
  * Return: number of characters that printed
  */
