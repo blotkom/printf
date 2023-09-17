@@ -1,18 +1,18 @@
+#include "main.h"
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "holberton.h"
 #include <stddef.h>
 /**
- * _printf - recreates the printf function
- * @format: string with format specifier
- * Return: number of characters printed
+ * _printf - our goal to create printf function
+ * @format: string
+ * Return: number the number of chaars
  */
 int _printf(const char *format, ...)
 {
 	if (format != NULL)
 	{
-		int count = 0, i;
+		int counter = 0, i;
 		int (*m)(va_list);
 		va_list args;
 
@@ -26,27 +26,27 @@ int _printf(const char *format, ...)
 			{
 				if (format[i + 1] == '%')
 				{
-					count += _putchar(format[i]);
+					counter += _putchar(format[i]);
 					i += 2;
 				}
 				else
 				{
-					m = get_func(format[i + 1]);
+					m = detector_func(format[i + 1]);
 					if (m)
-						count += m(args);
+						counter += m(args);
 					else
-						count = _putchar(format[i]) + _putchar(format[i + 1]);
+						counter = _putchar(format[i]) + _putchar(format[i + 1]);
 					i += 2;
 				}
 			}
 			else
 			{
-				count += _putchar(format[i]);
+				counter += _putchar(format[i]);
 				i++;
 			}
 		}
 		va_end(args);
-		return (count);
+		return (counter);
 	}
 	return (-1);
 }
